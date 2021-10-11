@@ -1,0 +1,11 @@
+div{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    font-style: italic;
+}
+h2{
+    font-family: Helvetica, Arial, sans-serif;
+    color: darkblue;
+    font-style:normal;
+    padding: 20px;
+}

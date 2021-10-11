@@ -1,0 +1,64 @@
+<div class="center" style="padding: 50px;">
+<form [formGroup]="registeredUser" (ngSubmit)="postApi(registeredUser.value)">
+    <table style="margin-top: auto; margin-left: auto; margin-right: auto;">
+        <tr>
+            <td style="text-align: left;">Username: </td>
+            <td style="width: 30px;"></td>
+            <td><input type="text" name="username" formControlName="username" (focusout)="checkUsername()"></td>
+        </tr>
+        <tr *ngIf="!usernameAvailable" style="height: 10px;">
+            <td></td>
+            <td></td>
+            <td style="font-size: small; color: red; text-align: right;">Username unavailable! :(</td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">Password: </td>
+            <td style="width: 30px;"></td>
+            <td><input type="password" name="password" formControlName="password"></td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">Confirm Password: </td>
+            <td style="width: 30px;"></td>
+            <td><input type="password" name="confirmPassword" formControlName="confirmPassword"></td>
+        </tr>
+        <tr *ngIf="registeredUser.controls.confirmPassword.invalid && registeredUser.controls.confirmPassword.touched" 
+        style="height: 10px;">
+            <td></td>
+            <td></td>
+            <td style="font-size: small; color: red; text-align: right;">Passwords don't match :/</td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">Security Question:</td>
+            <td style="width: 30px;"></td>
+            <td><input type="text" name="securityQuestion" formControlName="securityQuestion"></td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">Security Answer: </td>
+            <td style="width: 30px;"></td>
+            <td><input type="text" name="securityAnswer" formControlName="securityAnswer"></td>
+        </tr>
+    </table>
+    <div style="padding: 15px;"><button type="submit" class="btn btn-primary" style="background-color: royalblue;"
+        [disabled]="registeredUser.invalid">Submit</button></div>
+    <!--<div>
+        <span>Username: </span>
+        <input type="text" class="right">
+    </div>
+    <div>
+        <span>Password: </span>
+        <input type="password">
+    </div>
+    <div>
+        <span>Confirm Password: </span>
+        <input type="password">
+    </div>
+    <div>
+        <span>Security Question: </span>
+        <input type="text-area">
+    </div>
+    <div>
+        <span>Security Answer: </span>
+        <input type="text-area">
+    </div>-->
+</form>
+</div>

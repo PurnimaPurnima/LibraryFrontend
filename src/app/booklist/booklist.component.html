@@ -1,0 +1,64 @@
+<body>
+    <div style="padding-bottom: 25px;">
+        <span style="margin-left: 100px; color: rgb(83, 77, 77); font-size: large;">Filter By: </span>
+        <input type="text" style="margin-left: 25px;" [(ngModel)]='listFilter' />
+    
+        <span style="float: right; padding-right: 100px;">
+            <button *ngIf="isAdmin; else elseBlock" class="btn btn-primary" style="background-color: rgb(0,150,255);">
+                Add Book
+            </button>
+            <ng-template #elseBlock>
+                <button class="btn btn-primary" style="background-color: rgb(0,150,255);" (click)="unreadList()">
+                    {{isReadBooks?"All Books":"Books Not Read"}}
+                </button>
+            </ng-template>
+        </span>
+    </div>
+
+    <div>
+    <table border='1'class="container align-center border" style="width: 100cm;">
+        <th style="background-color:azure ; color: darkblue;">
+            <!--<button class="float-end btn btn-primary mt-3" 
+            style="background-color:blue; color: white; float: left; margin-bottom: 2mm;" (click)="toggleBook()">
+                {{isShowBook?"Hide":"Show"}} Books
+            </button>--->
+            Thumbnail
+        </th>
+        <th style="background-color:azure ; color: darkblue;">
+            Title
+        </th>
+        <th style="background-color:azure ; color: darkblue;">
+            Author
+        </th>
+        <th style="background-color:azure ; color: darkblue;" (click)="resetRating()">
+            Rating {{rating==-1?"":"("+rating+")"}}
+        </th>
+        <th style="background-color: azure;"></th>
+        <th style="background-color: azure;" *ngIf="isAdmin"></th>
+        
+
+        <tr *ngFor="let book of filteredBooks">
+            <td><a [href]='book.pdfUrl'><img [src]='book.imageUrl' style="height: 150px; margin: 2px;"></a></td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td><app-star [rating]='book.rating' (ratingClicked)="onRatingClicked($event)"></app-star></td>
+            <td><button *ngIf="isAdmin; else elseBlock" class="btn btn-primary" style="background-color: rgb(7, 7, 163); 
+                color: white; padding-right: 10px;">Update</button>
+                <ng-template #elseBlock>
+                    <button type="button" class="btn btn-primary" style="background-color: rgb(11, 78, 139);" 
+                    *ngIf="book.isRead ; else bookNotRead" (click)="markUnread(book)">
+                        Mark as Unread
+                    </button>
+                    <ng-template #bookNotRead>
+                        <button class="btn btn-primary" style="background-color: rgb(7, 7, 163);" (click)="markRead(book)">
+                            Mark as Read
+                        </button>
+                    </ng-template>
+                </ng-template>
+            </td>
+            <td *ngIf="isAdmin"><button class="btn btn-primary" style="color: white; background-color: rgb(161, 10, 10);">Delete</button></td>
+        </tr>
+    </table>
+</div>
+
+</body>

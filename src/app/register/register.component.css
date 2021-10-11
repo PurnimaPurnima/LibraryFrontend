@@ -1,0 +1,26 @@
+div{
+    padding: 10px;
+}
+
+.center{
+    display: block;
+    text-align: center;
+}
+
+/* span{
+    text-align: left;
+} */
+
+form{
+    margin-left: auto;
+    margin-top: auto;
+}
+
+
+.right{
+    align-items: right;
+}
+
+tr{
+    height: 50px;
+}
