@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Books } from '../Models/book';
 import { BooksService } from '../Services/books.service';
 
@@ -10,7 +11,7 @@ import { BooksService } from '../Services/books.service';
 })
 export class CreateBookComponent implements OnInit {
 
-  constructor(private _book:BooksService) { }
+  constructor(private _book:BooksService, private _router:Router) { }
 
   thumbnail:any;
   pdf:any;
@@ -48,6 +49,7 @@ export class CreateBookComponent implements OnInit {
     this._book.postBook(data).subscribe(response=>{
       this.message="Successfully Created" + response.title;
       alert("Success!");
+      this._router.navigate(["/Booklist"]);
     });
     
     this._book.postImage(this.thumbnail).subscribe();
