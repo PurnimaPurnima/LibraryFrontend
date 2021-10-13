@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BooklistComponent } from './booklist/booklist.component';
+import { CreateBookComponent } from './create-book/create-book.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BooklistGuard } from './Guards/booklist.guard';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:"Register", component:RegisterComponent
+  },
+  {
+    path:"AddBook", component:CreateBookComponent
   },
   {
     path:"*", redirectTo:''

@@ -1,0 +1,40 @@
+<div style="display: block; text-align: center;">
+    <form [formGroup]="createBook" (submit)="addBook(createBook.value)">
+        <table style="margin-top: auto; margin-left: auto; margin-right: auto;">
+            <tr>
+                <td style="text-align: left;">Title</td>
+                <td style="width: 30px;"></td>
+                <td><input type="text" name="Title" style="width: 290px;" formControlName="title"></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Author</td>
+                <td style="width: 30px;"></td>
+                <td><input type="text" name="Author" style="width: 290px;" formControlName="author"></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Rating</td>
+                <td style="width: 30px;"></td>
+                <td><input type="number" name="Rating" style="width: 290px;" formControlName="rating"></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Thumbnail</td>
+                <td style="width: 30px;"></td>
+                <td><input type="file" name="Thumbnail" formControlName="thumbnail" (change)="thumbnailUpload($event)" accept=
+                    "image/jpg, image/jpeg, image/png"></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">PDF</td>
+                <td style="width: 30px;"></td>
+                <td><input type="file" name="PDF" formControlName="pdf" (change)="pdfUpload($event)" accept="application/pdf"></td>
+            </tr>
+            
+        </table>
+
+        <div style="padding: 15px;">
+            <button type="submit" class="btn btn-primary" style="background-color: royalblue;" [disabled]="createBook.invalid">
+                Add Book
+            </button>
+        </div>
+
+    </form>
+</div>

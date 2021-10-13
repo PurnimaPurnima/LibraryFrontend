@@ -120,4 +120,11 @@ export class BooklistComponent implements OnInit {
     this.unreadBooks=this.performReadBooksFilter(value.id,this.unreadBooks);
   }
 
+  deleteBook(data:any){
+    console.log(data);
+    this.bookList=this.performReadBooksFilter(data.id,this.bookList);
+    this.filteredBooks=this.performFilter(this.listFilter,this.bookList);
+    this.booksObj.deleteBookById(data.id).subscribe();
+  }
+
 }
